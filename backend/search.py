@@ -47,14 +47,25 @@ def normalize_words(text: str) -> set:
     return {w for w in cleaned.split() if w not in STOPWORDS}
 
 # ---------------------------------------------------------------------------
-# 1. Load the embedding model (runs locally, free, no API key needed)
+# 1. The embedding model is loaded LAZILY (on first use), not at import time.
 # ---------------------------------------------------------------------------
-# all-MiniLM-L6-v2 is a small, fast, well-regarded sentence embedding model.
-# The first time this runs it downloads the model (~80MB) and caches it
-# locally; every run after that is instant and fully offline.
-print("Loading embedding model... (first run may take a minute)")
-model = SentenceTransformer("all-MiniLM-L6-v2")
-print("Embedding model loaded.")
+# This matters a lot for deployment: if the model loaded at import time,
+# `uvicorn main:app` would block on downloading/loading it before the
+# server could even open its port -- on a slow/low-memory host (like a
+# free-tier server) this can take long enough that the platform's health
+# check times out and marks the deploy as failed, even though nothing is
+# actually broken. Loading it lazily lets the server start (and open its
+# port) instantly; the model only loads when the first search comes in.
+_model = None
+
+
+def get_model():
+    global _model
+    if _model is None:
+        print("Loading embedding model... (first request may be slow)")
+        _model = SentenceTransformer("all-MiniLM-L6-v2")
+        print("Embedding model loaded.")
+    return _model
 
 
 def load_documents():
@@ -63,7 +74,7 @@ def load_documents():
 
 
 # ---------------------------------------------------------------------------
-# 2. Build the embedding index (done once, at startup)
+# 2. Build the embedding index (also lazy -- built on first use)
 # ---------------------------------------------------------------------------
 class SearchIndex:
     def __init__(self):
@@ -72,14 +83,14 @@ class SearchIndex:
         self.texts = [f"{d['question']} {d['answer']}" for d in self.documents]
         # model.encode turns a list of strings into a 2D numpy array
         # of shape (num_documents, embedding_dimension)
-        self.embeddings = model.encode(self.texts, normalize_embeddings=True)
+        self.embeddings = get_model().encode(self.texts, normalize_embeddings=True)
 
     def semantic_search(self, query: str, top_k: int = 5):
         """
         Embed the query, compare against every document embedding using
         cosine similarity, and return the top_k most similar documents.
         """
-        query_embedding = model.encode([query], normalize_embeddings=True)[0]
+        query_embedding = get_model().encode([query], normalize_embeddings=True)[0]
 
         # Because embeddings are normalized (unit length), cosine similarity
         # simplifies to a plain dot product. This is the actual "search".
@@ -125,12 +136,21 @@ class SearchIndex:
         return results
 
 
-# A single shared index instance, built once when the server starts
-search_index = SearchIndex()
+# A single shared index instance -- also lazy. Built on first request,
+# then cached and reused for every request after that.
+_search_index = None
+
+
+def get_search_index():
+    global _search_index
+    if _search_index is None:
+        _search_index = SearchIndex()
+    return _search_index
 
 
 if __name__ == "__main__":
     # Quick manual test you can run directly: python search.py
+    search_index = get_search_index()
     test_queries = [
         "how do I get my money back",
         "I forgot my login credentials",

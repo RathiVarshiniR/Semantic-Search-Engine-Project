@@ -1,3 +1,13 @@
+# torch is pulled in separately below with --extra-index-url, pointed at
+# PyTorch's CPU-only wheel index. Without this, pip installs the default
+# PyPI build of torch, which drags in a full set of NVIDIA CUDA packages
+# (cudnn, triton, cusparselt, etc) even on a CPU-only host like Render's
+# free tier -- that bloats install size/time and wastes RAM you don't
+# have to spare. sentence-transformers is listed without its own torch
+# pin so it uses whichever torch is installed below.
+--extra-index-url https://download.pytorch.org/whl/cpu
+torch
+
 fastapi==0.141.1
 numpy==2.4.4
 python-multipart==0.0.32
