@@ -2,7 +2,12 @@ import { useState } from "react";
 
 // Change this if your backend runs on a different port/host,
 // or set it via an environment variable when you deploy.
-const API_URL = import.meta.env.VITE_API_URL || "http://localhost:8000";
+// .replace(/\/+$/, "") strips any trailing slash(es) -- without this,
+// setting VITE_API_URL to "https://api.example.com/" (with a trailing
+// slash) would produce a double slash like ".com//search/compare",
+// which most backends (including FastAPI) treat as a different route
+// and return a 404 for, even though the intent was correct.
+const API_URL = (import.meta.env.VITE_API_URL || "http://localhost:8000").replace(/\/+$/, "");
 
 const EXAMPLES = [
   "how do I get my money back",
