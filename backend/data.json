@@ -1,0 +1,102 @@
+[
+  {
+    "id": 1,
+    "question": "What is your refund policy?",
+    "answer": "You can request a full refund within 30 days of purchase. Refunds are processed to your original payment method within 5-7 business days."
+  },
+  {
+    "id": 2,
+    "question": "How do I reset my password?",
+    "answer": "Go to the login page and click 'Forgot Password'. Enter your email address and we'll send you a link to create a new password."
+  },
+  {
+    "id": 3,
+    "question": "Do you offer student discounts?",
+    "answer": "Yes, students with a valid .edu email address get 20% off any annual plan. Apply the discount at checkout by verifying your student status."
+  },
+  {
+    "id": 4,
+    "question": "How can I cancel my subscription?",
+    "answer": "Go to Account Settings > Billing > Cancel Subscription. Your plan will remain active until the end of the current billing cycle."
+  },
+  {
+    "id": 5,
+    "question": "Is my payment information secure?",
+    "answer": "Yes, we use industry-standard 256-bit SSL encryption and never store your full card number on our servers. All payments are processed through PCI-compliant providers."
+  },
+  {
+    "id": 6,
+    "question": "Can I use the product on multiple devices?",
+    "answer": "Yes, your account can be logged into up to 3 devices simultaneously on the Pro plan, and unlimited devices on the Business plan."
+  },
+  {
+    "id": 7,
+    "question": "What happens if I exceed my storage limit?",
+    "answer": "You'll receive an email warning when you reach 90% of your storage limit. If you exceed it, uploads will be paused until you free up space or upgrade your plan."
+  },
+  {
+    "id": 8,
+    "question": "Do you have a mobile app?",
+    "answer": "Yes, our app is available for free on both the Apple App Store and Google Play Store, with full feature parity to the desktop version."
+  },
+  {
+    "id": 9,
+    "question": "How do I contact customer support?",
+    "answer": "You can reach our support team via live chat in the app, or by emailing support@example.com. Average response time is under 2 hours during business days."
+  },
+  {
+    "id": 10,
+    "question": "Can I export my data?",
+    "answer": "Yes, go to Settings > Data Export to download all your data as a CSV or JSON file at any time, even after cancelling your subscription."
+  },
+  {
+    "id": 11,
+    "question": "What payment methods do you accept?",
+    "answer": "We accept all major credit cards, PayPal, and bank transfers for annual plans. Cryptocurrency payments are not currently supported."
+  },
+  {
+    "id": 12,
+    "question": "Is there a free trial available?",
+    "answer": "Yes, all new accounts get a 14-day free trial with full access to Pro features. No credit card is required to start the trial."
+  },
+  {
+    "id": 13,
+    "question": "How do I invite team members?",
+    "answer": "Go to Team Settings > Invite Members and enter their email addresses. They'll receive an invitation link to join your workspace."
+  },
+  {
+    "id": 14,
+    "question": "What happens to my data if I delete my account?",
+    "answer": "All your data is permanently deleted within 30 days of account deletion. You can request immediate deletion by contacting support."
+  },
+  {
+    "id": 15,
+    "question": "Do you offer discounts for non-profits?",
+    "answer": "Yes, registered non-profit organizations receive a 30% discount on all annual plans. Submit your non-profit documentation to support to apply."
+  },
+  {
+    "id": 16,
+    "question": "Can I change my billing cycle from monthly to annual?",
+    "answer": "Yes, go to Account Settings > Billing and select 'Switch to Annual'. You'll be prorated for the remainder of your current billing period."
+  },
+  {
+    "id": 17,
+    "question": "What browsers are supported?",
+    "answer": "We support the latest versions of Chrome, Firefox, Safari, and Edge. Internet Explorer is not supported."
+  },
+  {
+    "id": 18,
+    "question": "How do I enable two-factor authentication?",
+    "answer": "Go to Account Settings > Security > Two-Factor Authentication and follow the setup instructions using an authenticator app like Google Authenticator."
+  },
+  {
+    "id": 19,
+    "question": "Can I downgrade my plan at any time?",
+    "answer": "Yes, you can downgrade at any time from Account Settings > Billing. The change takes effect at the start of your next billing cycle."
+  },
+  {
+    "id": 20,
+    "question": "Do you provide API access?",
+    "answer": "Yes, API access is available on the Business plan and above. You can generate API keys from Settings > Developer > API Keys."
+  }
+]
