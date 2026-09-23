@@ -1,0 +1,458 @@
+{
+  "test_set_size": 25,
+  "top_k_cutoff": 3,
+  "summary": {
+    "semantic": {
+      "top_1_accuracy": 1.0,
+      "top_k_accuracy": 1.0,
+      "mrr": 1.0,
+      "n": 25
+    },
+    "keyword": {
+      "top_1_accuracy": 0.24,
+      "top_k_accuracy": 0.32,
+      "mrr": 0.2733333333333333,
+      "n": 25
+    }
+  },
+  "by_category": {
+    "semantic": {
+      "paraphrase": {
+        "top_1_accuracy": 1.0,
+        "top_k_accuracy": 1.0,
+        "mrr": 1.0,
+        "n": 20
+      },
+      "literal": {
+        "top_1_accuracy": 1.0,
+        "top_k_accuracy": 1.0,
+        "mrr": 1.0,
+        "n": 5
+      }
+    },
+    "keyword": {
+      "paraphrase": {
+        "top_1_accuracy": 0.05,
+        "top_k_accuracy": 0.15,
+        "mrr": 0.09166666666666666,
+        "n": 20
+      },
+      "literal": {
+        "top_1_accuracy": 1.0,
+        "top_k_accuracy": 1.0,
+        "mrr": 1.0,
+        "n": 5
+      }
+    }
+  },
+  "latency_ms": {
+    "semantic_avg": 21.764835994690657,
+    "keyword_avg": 0.3568319953046739
+  },
+  "per_query": {
+    "semantic": [
+      {
+        "query": "how do I get my money back",
+        "category": "paraphrase",
+        "expected_id": 1,
+        "rank": 1,
+        "top_result_question": "What is your refund policy?",
+        "latency_ms": 27.25
+      },
+      {
+        "query": "I can't access my account because I don't remember my sign in details",
+        "category": "paraphrase",
+        "expected_id": 2,
+        "rank": 1,
+        "top_result_question": "How do I reset my password?",
+        "latency_ms": 24.555
+      },
+      {
+        "query": "is there a price break for people currently in college",
+        "category": "paraphrase",
+        "expected_id": 3,
+        "rank": 1,
+        "top_result_question": "Do you offer student discounts?",
+        "latency_ms": 22.295
+      },
+      {
+        "query": "I want to stop paying and quit my membership",
+        "category": "paraphrase",
+        "expected_id": 4,
+        "rank": 1,
+        "top_result_question": "How can I cancel my subscription?",
+        "latency_ms": 21.706
+      },
+      {
+        "query": "is it safe to pay here",
+        "category": "paraphrase",
+        "expected_id": 5,
+        "rank": 1,
+        "top_result_question": "Is my payment information secure?",
+        "latency_ms": 19.362
+      },
+      {
+        "query": "can I log in from more than one gadget at once",
+        "category": "paraphrase",
+        "expected_id": 6,
+        "rank": 1,
+        "top_result_question": "Can I use the product on multiple devices?",
+        "latency_ms": 23.774
+      },
+      {
+        "query": "what if I run out of room for my files",
+        "category": "paraphrase",
+        "expected_id": 7,
+        "rank": 1,
+        "top_result_question": "What happens if I exceed my storage limit?",
+        "latency_ms": 21.315
+      },
+      {
+        "query": "using this on my phone",
+        "category": "paraphrase",
+        "expected_id": 8,
+        "rank": 1,
+        "top_result_question": "Do you have a mobile app?",
+        "latency_ms": 19.369
+      },
+      {
+        "query": "who do I talk to if I need help",
+        "category": "paraphrase",
+        "expected_id": 9,
+        "rank": 1,
+        "top_result_question": "How do I contact customer support?",
+        "latency_ms": 21.468
+      },
+      {
+        "query": "how do I get a copy of all my information",
+        "category": "paraphrase",
+        "expected_id": 10,
+        "rank": 1,
+        "top_result_question": "Can I export my data?",
+        "latency_ms": 19.52
+      },
+      {
+        "query": "what ways can I send money to you",
+        "category": "paraphrase",
+        "expected_id": 11,
+        "rank": 1,
+        "top_result_question": "What payment methods do you accept?",
+        "latency_ms": 22.184
+      },
+      {
+        "query": "can I try it before I pay anything",
+        "category": "paraphrase",
+        "expected_id": 12,
+        "rank": 1,
+        "top_result_question": "Is there a free trial available?",
+        "latency_ms": 21.166
+      },
+      {
+        "query": "how can I add my coworkers to the account",
+        "category": "paraphrase",
+        "expected_id": 13,
+        "rank": 1,
+        "top_result_question": "How do I invite team members?",
+        "latency_ms": 23.157
+      },
+      {
+        "query": "if I close my account will everything be erased",
+        "category": "paraphrase",
+        "expected_id": 14,
+        "rank": 1,
+        "top_result_question": "What happens to my data if I delete my account?",
+        "latency_ms": 22.149
+      },
+      {
+        "query": "we are a charity, can we get a lower price",
+        "category": "paraphrase",
+        "expected_id": 15,
+        "rank": 1,
+        "top_result_question": "Do you offer discounts for non-profits?",
+        "latency_ms": 23.757
+      },
+      {
+        "query": "how do I move from paying every month to paying once a year",
+        "category": "paraphrase",
+        "expected_id": 16,
+        "rank": 1,
+        "top_result_question": "Can I change my billing cycle from monthly to annual?",
+        "latency_ms": 25.366
+      },
+      {
+        "query": "which web applications does this work with",
+        "category": "paraphrase",
+        "expected_id": 17,
+        "rank": 1,
+        "top_result_question": "What browsers are supported?",
+        "latency_ms": 21.0
+      },
+      {
+        "query": "how do I add an extra verification step using a code from my phone",
+        "category": "paraphrase",
+        "expected_id": 18,
+        "rank": 1,
+        "top_result_question": "How do I enable two-factor authentication?",
+        "latency_ms": 23.994
+      },
+      {
+        "query": "can I move to a cheaper tier whenever I want",
+        "category": "paraphrase",
+        "expected_id": 19,
+        "rank": 1,
+        "top_result_question": "Can I downgrade my plan at any time?",
+        "latency_ms": 22.676
+      },
+      {
+        "query": "can developers connect programmatically to pull information",
+        "category": "paraphrase",
+        "expected_id": 20,
+        "rank": 1,
+        "top_result_question": "Do you provide API access?",
+        "latency_ms": 22.775
+      },
+      {
+        "query": "refund policy",
+        "category": "literal",
+        "expected_id": 1,
+        "rank": 1,
+        "top_result_question": "What is your refund policy?",
+        "latency_ms": 17.662
+      },
+      {
+        "query": "reset my password",
+        "category": "literal",
+        "expected_id": 2,
+        "rank": 1,
+        "top_result_question": "How do I reset my password?",
+        "latency_ms": 18.719
+      },
+      {
+        "query": "student discount",
+        "category": "literal",
+        "expected_id": 3,
+        "rank": 1,
+        "top_result_question": "Do you offer student discounts?",
+        "latency_ms": 19.526
+      },
+      {
+        "query": "cancel my subscription",
+        "category": "literal",
+        "expected_id": 4,
+        "rank": 1,
+        "top_result_question": "How can I cancel my subscription?",
+        "latency_ms": 19.236
+      },
+      {
+        "query": "what payment methods do you accept",
+        "category": "literal",
+        "expected_id": 11,
+        "rank": 1,
+        "top_result_question": "What payment methods do you accept?",
+        "latency_ms": 20.14
+      }
+    ],
+    "keyword": [
+      {
+        "query": "how do I get my money back",
+        "category": "paraphrase",
+        "expected_id": 1,
+        "rank": null,
+        "top_result_question": null,
+        "latency_ms": 0.45
+      },
+      {
+        "query": "I can't access my account because I don't remember my sign in details",
+        "category": "paraphrase",
+        "expected_id": 2,
+        "rank": null,
+        "top_result_question": "How can I cancel my subscription?",
+        "latency_ms": 0.408
+      },
+      {
+        "query": "is there a price break for people currently in college",
+        "category": "paraphrase",
+        "expected_id": 3,
+        "rank": null,
+        "top_result_question": "What payment methods do you accept?",
+        "latency_ms": 0.369
+      },
+      {
+        "query": "I want to stop paying and quit my membership",
+        "category": "paraphrase",
+        "expected_id": 4,
+        "rank": null,
+        "top_result_question": null,
+        "latency_ms": 0.36
+      },
+      {
+        "query": "is it safe to pay here",
+        "category": "paraphrase",
+        "expected_id": 5,
+        "rank": null,
+        "top_result_question": null,
+        "latency_ms": 0.361
+      },
+      {
+        "query": "can I log in from more than one gadget at once",
+        "category": "paraphrase",
+        "expected_id": 6,
+        "rank": null,
+        "top_result_question": null,
+        "latency_ms": 0.361
+      },
+      {
+        "query": "what if I run out of room for my files",
+        "category": "paraphrase",
+        "expected_id": 7,
+        "rank": null,
+        "top_result_question": null,
+        "latency_ms": 0.371
+      },
+      {
+        "query": "using this on my phone",
+        "category": "paraphrase",
+        "expected_id": 8,
+        "rank": null,
+        "top_result_question": "How do I enable two-factor authentication?",
+        "latency_ms": 0.36
+      },
+      {
+        "query": "who do I talk to if I need help",
+        "category": "paraphrase",
+        "expected_id": 9,
+        "rank": null,
+        "top_result_question": null,
+        "latency_ms": 0.351
+      },
+      {
+        "query": "how do I get a copy of all my information",
+        "category": "paraphrase",
+        "expected_id": 10,
+        "rank": 2,
+        "top_result_question": "Is my payment information secure?",
+        "latency_ms": 0.361
+      },
+      {
+        "query": "what ways can I send money to you",
+        "category": "paraphrase",
+        "expected_id": 11,
+        "rank": null,
+        "top_result_question": "How do I reset my password?",
+        "latency_ms": 0.36
+      },
+      {
+        "query": "can I try it before I pay anything",
+        "category": "paraphrase",
+        "expected_id": 12,
+        "rank": null,
+        "top_result_question": null,
+        "latency_ms": 0.353
+      },
+      {
+        "query": "how can I add my coworkers to the account",
+        "category": "paraphrase",
+        "expected_id": 13,
+        "rank": null,
+        "top_result_question": "How can I cancel my subscription?",
+        "latency_ms": 0.371
+      },
+      {
+        "query": "if I close my account will everything be erased",
+        "category": "paraphrase",
+        "expected_id": 14,
+        "rank": 3,
+        "top_result_question": "How can I cancel my subscription?",
+        "latency_ms": 0.366
+      },
+      {
+        "query": "we are a charity, can we get a lower price",
+        "category": "paraphrase",
+        "expected_id": 15,
+        "rank": null,
+        "top_result_question": null,
+        "latency_ms": 0.352
+      },
+      {
+        "query": "how do I move from paying every month to paying once a year",
+        "category": "paraphrase",
+        "expected_id": 16,
+        "rank": null,
+        "top_result_question": null,
+        "latency_ms": 0.438
+      },
+      {
+        "query": "which web applications does this work with",
+        "category": "paraphrase",
+        "expected_id": 17,
+        "rank": null,
+        "top_result_question": null,
+        "latency_ms": 0.372
+      },
+      {
+        "query": "how do I add an extra verification step using a code from my phone",
+        "category": "paraphrase",
+        "expected_id": 18,
+        "rank": 1,
+        "top_result_question": "How do I enable two-factor authentication?",
+        "latency_ms": 0.304
+      },
+      {
+        "query": "can I move to a cheaper tier whenever I want",
+        "category": "paraphrase",
+        "expected_id": 19,
+        "rank": null,
+        "top_result_question": null,
+        "latency_ms": 0.292
+      },
+      {
+        "query": "can developers connect programmatically to pull information",
+        "category": "paraphrase",
+        "expected_id": 20,
+        "rank": null,
+        "top_result_question": "Is my payment information secure?",
+        "latency_ms": 0.283
+      },
+      {
+        "query": "refund policy",
+        "category": "literal",
+        "expected_id": 1,
+        "rank": 1,
+        "top_result_question": "What is your refund policy?",
+        "latency_ms": 0.282
+      },
+      {
+        "query": "reset my password",
+        "category": "literal",
+        "expected_id": 2,
+        "rank": 1,
+        "top_result_question": "How do I reset my password?",
+        "latency_ms": 0.294
+      },
+      {
+        "query": "student discount",
+        "category": "literal",
+        "expected_id": 3,
+        "rank": 1,
+        "top_result_question": "Do you offer student discounts?",
+        "latency_ms": 0.372
+      },
+      {
+        "query": "cancel my subscription",
+        "category": "literal",
+        "expected_id": 4,
+        "rank": 1,
+        "top_result_question": "How can I cancel my subscription?",
+        "latency_ms": 0.373
+      },
+      {
+        "query": "what payment methods do you accept",
+        "category": "literal",
+        "expected_id": 11,
+        "rank": 1,
+        "top_result_question": "What payment methods do you accept?",
+        "latency_ms": 0.358
+      }
+    ]
+  }
+}

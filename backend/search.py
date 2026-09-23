@@ -14,6 +14,7 @@ so the frontend can show "keyword vs semantic" side by side.
 
 import json
 import os
+import threading
 import numpy as np
 from sentence_transformers import SentenceTransformer
 
@@ -57,14 +58,28 @@ def normalize_words(text: str) -> set:
 # actually broken. Loading it lazily lets the server start (and open its
 # port) instantly; the model only loads when the first search comes in.
 _model = None
+_model_lock = threading.Lock()
 
 
 def get_model():
     global _model
-    if _model is None:
-        print("Loading embedding model... (first request may be slow)")
-        _model = SentenceTransformer("all-MiniLM-L6-v2")
-        print("Embedding model loaded.")
+    # Fast path: if it's already loaded, skip locking entirely -- this
+    # check is what makes every request after the first one instant.
+    if _model is not None:
+        return _model
+
+    # Slow path: only one caller should actually load the model, even if
+    # several requests (or the background warmup thread) all reach here
+    # at the same time. Without this lock, two threads could both see
+    # `_model is None` and each start their own SentenceTransformer(...)
+    # load simultaneously -- doubling memory usage right when it's most
+    # constrained (e.g. a free-tier host with limited RAM), which can
+    # cause the process to hang or crash instead of just being slow.
+    with _model_lock:
+        if _model is None:  # re-check: another thread may have finished while we waited
+            print("Loading embedding model... (first request may be slow)")
+            _model = SentenceTransformer("all-MiniLM-L6-v2")
+            print("Embedding model loaded.")
     return _model
 
 
@@ -136,16 +151,31 @@ class SearchIndex:
         return results
 
 
-# A single shared index instance -- also lazy. Built on first request,
-# then cached and reused for every request after that.
+# A single shared index instance -- also lazy, and lock-protected for the
+# same reason as get_model() above. Built on first request, then cached
+# and reused for every request after that.
 _search_index = None
+_search_index_lock = threading.Lock()
 
 
 def get_search_index():
     global _search_index
-    if _search_index is None:
-        _search_index = SearchIndex()
+    if _search_index is not None:
+        return _search_index
+    with _search_index_lock:
+        if _search_index is None:
+            _search_index = SearchIndex()
     return _search_index
+
+
+def is_ready() -> bool:
+    """
+    Non-blocking check: is the model/index already loaded? Unlike
+    get_model()/get_search_index(), calling this NEVER triggers a load --
+    it just reports current state, so a /health endpoint can poll it
+    without accidentally kicking off (or racing) a load itself.
+    """
+    return _model is not None and _search_index is not None
 
 
 if __name__ == "__main__":

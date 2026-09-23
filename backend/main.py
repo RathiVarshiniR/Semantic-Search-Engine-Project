@@ -14,7 +14,7 @@ Then visit http://localhost:8000/docs for interactive API docs
 from fastapi import FastAPI, Query
 from fastapi.middleware.cors import CORSMiddleware
 import threading
-from search import get_search_index
+from search import get_search_index, is_ready
 
 app = FastAPI(title="Semantic Search API")
 
@@ -46,6 +46,19 @@ def warm_up_in_background():
 @app.get("/")
 def root():
     return {"status": "ok", "message": "Semantic Search API is running"}
+
+
+@app.get("/health")
+def health():
+    """
+    Reports whether the embedding model/index has finished loading yet.
+    Unlike '/', which responds instantly the moment the server boots,
+    this tells you whether a search request right now would be fast
+    (model already warm) or slow (still loading in the background) --
+    useful for free-tier hosts where that load can take a couple of
+    minutes after a cold start.
+    """
+    return {"ready": is_ready()}
 
 
 @app.get("/documents")
